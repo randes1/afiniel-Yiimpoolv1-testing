@@ -44,16 +44,7 @@ clone_or_update_repo() {
     echo "Cloning Yiimpool Installer ${TAG}..."
     git clone -b "${TAG}" --depth 1 https://github.com/randes1/afiniel-Yiimpoolv1-testing "$YIIMPOOL_INSTALL_DIR" < /dev/null
     echo "Repository cloned."
-  else
-    echo "Updating Yiimpool Installer to ${TAG}..."
-    cd "$YIIMPOOL_INSTALL_DIR"
-    sudo chown -R "$USER" "$YIIMPOOL_INSTALL_DIR/.git/"
-    git fetch --depth 1 --force --prune origin tag "${TAG}"
-    if ! git checkout -q "${TAG}"; then
-      log_error "Failed to update repository to ${TAG}."
-      exit 1
-    fi
-    echo "Repository updated."
+  
   fi
 }
 
